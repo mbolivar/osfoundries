@@ -450,28 +450,28 @@ maintainability; some false information messages were also removed.
 Individual Changes
 ==================
 
-Patches by area (398 patches total):
+Patches by area (417 patches total):
 
-- Arches: 57
+- Arches: 63
 - Bluetooth: 24
-- Boards: 32
+- Boards: 33
 - Build: 17
 - Continuous Integration: 7
-- Device Tree: 8
+- Device Tree: 12
 - Documentation: 15
-- Drivers: 104
-- External: 13
+- Drivers: 107
+- External: 16
 - Firmware Update: 2
-- Kernel: 10
+- Kernel: 11
 - Libraries: 3
 - Maintainers: 1
 - Miscellaneous: 4
 - Networking: 50
 - Samples: 21
 - Scripts: 8
-- Testing: 22
+- Testing: 23
 
-Arches (57):
+Arches (63):
 
 - [687355c9](https://github.com/zephyrproject-rtos/zephyr/commit/687355c9af5ab8bd5f739e22eba26d94f75d615c) arch: arm: nrf: Use SystemInit() from MDK in SoC initialization
 - [1fa9d843](https://github.com/zephyrproject-rtos/zephyr/commit/1fa9d84332b92503ab84cc45537c9afff1015f34) arch: arm: nrf: add hardware description for nrf Kconfig files
@@ -530,6 +530,12 @@ Arches (57):
 - [85d2633a](https://github.com/zephyrproject-rtos/zephyr/commit/85d2633af2ed8f225ac7453d74eceace94830f09) stm32f2: add stm32f207xg soc
 - [7e2f6ebc](https://github.com/zephyrproject-rtos/zephyr/commit/7e2f6ebc7b4f9440b11723976070ad2ffb8deb55) stm32f2: add stm32f207xe soc
 - [0a5de7df](https://github.com/zephyrproject-rtos/zephyr/commit/0a5de7df718eaa7304cffee7ca1e63d386157fe6) native_posix: override C standard version to 2011
+- [889b290a](https://github.com/zephyrproject-rtos/zephyr/commit/889b290a98f83aa900554fc01f9e373a069d6dde) arch: arm: beetle: Pull in CMSDK header for CMSIS support on Beetle
+- [41dd6622](https://github.com/zephyrproject-rtos/zephyr/commit/41dd6622cedf64388f850869773b729056b3d817) arm: Print NXP MPU error information in BusFault dump
+- [54fbcc08](https://github.com/zephyrproject-rtos/zephyr/commit/54fbcc08a98acfbc1108bcfd485a3d11fd1a7c80) arch: arm: mpu: get REGION_SIZE_<X> defines directly from ARM CMSIS
+- [4e26f9c3](https://github.com/zephyrproject-rtos/zephyr/commit/4e26f9c3a65a29e8f38f22516f8aa029573e0222) arch: stm32f0/f1/f3/l0: remove core zephyr header inclusions
+- [5aaf827a](https://github.com/zephyrproject-rtos/zephyr/commit/5aaf827a3ea96dd99f12e391ab1fd7811878bf61) arch: arm: stm32f2: remove core zephyr header inclusions from soc.h
+- [8776835b](https://github.com/zephyrproject-rtos/zephyr/commit/8776835bd62062c6e6df0bd35b540c6a4787a79f) arch: arm: stm32: add basic support for STM32F769 SoC
 
 Bluetooth (24):
 
@@ -558,7 +564,7 @@ Bluetooth (24):
 - [c6dea9e0](https://github.com/zephyrproject-rtos/zephyr/commit/c6dea9e068636b39dbe2da7ff0f80e33fe07ae10) Bluetooth: Reorganize Kconfig options for BLE controller
 - [dbc00ba3](https://github.com/zephyrproject-rtos/zephyr/commit/dbc00ba37479e640f676a81d4203c6849f8a56d8) Bluetooth: controller: Fix empty_pkt_us_get for 2M phy.
 
-Boards (32):
+Boards (33):
 
 - [52e120ed](https://github.com/zephyrproject-rtos/zephyr/commit/52e120ed91d622eb69c41b3e100bc1502eac0edc) boards/arm: add support for udoo_neo_full_m4 board
 - [8792c5c9](https://github.com/zephyrproject-rtos/zephyr/commit/8792c5c9365bb95a185c06c9c5bf42f2dd78c839) boards: intel_s1000: Config for USB PHY 2.0
@@ -592,6 +598,7 @@ Boards (32):
 - [2a490fd0](https://github.com/zephyrproject-rtos/zephyr/commit/2a490fd030af9f7f8096c2ef98cef8524038aba5) boards: Set nucleo_f429zi compatible with configuration guidelines
 - [10fc37d7](https://github.com/zephyrproject-rtos/zephyr/commit/10fc37d78e44b702eb76af4ade75584655180b04) boards/shields: Add connector flags for compatibility checks
 - [ff0c5a2a](https://github.com/zephyrproject-rtos/zephyr/commit/ff0c5a2afd1dcf5dbce5051620978d1bade93880) boards: nucleo_f429zi: state compatibility with Arduino connectors
+- [cc5ae491](https://github.com/zephyrproject-rtos/zephyr/commit/cc5ae49133b48d4a7b3372f0bf22f942416debb7) boards: arm: stm32: basic support for STM32F769I-DISCO board
 
 Build (17):
 
@@ -623,7 +630,7 @@ Continuous Integration (7):
 - [1545b378](https://github.com/zephyrproject-rtos/zephyr/commit/1545b378c850996263a46dd5ce8ef0a938377cac) CI: explicitly enable compiling w coverage in sanitycheck
 - [8cf49371](https://github.com/zephyrproject-rtos/zephyr/commit/8cf49371afd3cc2eca05c3cf0b4418af6c16a506) ci: use latest docker image v0.4-rc7
 
-Device Tree (8):
+Device Tree (12):
 
 - [06f4daf8](https://github.com/zephyrproject-rtos/zephyr/commit/06f4daf8479cb3a48c790007eb76ee76a084cf82) dts: add parentheses around argument in macro __SIZE_K
 - [37028baf](https://github.com/zephyrproject-rtos/zephyr/commit/37028baf3870a938d71978d943c5b3ecb8a0b22f) dts/bindings: Remove redundant clock properties in st,stm32-i2c...
@@ -633,6 +640,10 @@ Device Tree (8):
 - [9b046ec0](https://github.com/zephyrproject-rtos/zephyr/commit/9b046ec08a1ea506830b62c1370b3595be032ebd) dts/stm32: add clock property to spi nodes
 - [d5100d79](https://github.com/zephyrproject-rtos/zephyr/commit/d5100d792f3a28eee54fee0e8a91bf7cecb0335c) dts/st: add clock property to i2c nodes
 - [dbf11bef](https://github.com/zephyrproject-rtos/zephyr/commit/dbf11bef81cef6d62ab96ed526d8104907ca9d77) dts: stm32f7-pinctrl Add definitions for F7 USART/UARTs
+- [db1075e4](https://github.com/zephyrproject-rtos/zephyr/commit/db1075e4e5930d2c651660d4a975c930935fd661) dts: Fix warning related to arm,v{6,7,8}m-nvic yaml files
+- [ce983e77](https://github.com/zephyrproject-rtos/zephyr/commit/ce983e77c876bc4404b4c031fa727a160e663211) dts/arm/st: Fix I2C1 clock property
+- [ebc5e51e](https://github.com/zephyrproject-rtos/zephyr/commit/ebc5e51ef6d4cc8ef7bc1010207aa099840e5f29) dts/arm/st: Fix I2C3 clock property on L0 series
+- [1af5ce40](https://github.com/zephyrproject-rtos/zephyr/commit/1af5ce40cdc8b04310ec64aefcb5a2f5bd3c4431) dts/arm/st: Fix SPI1 clock property on F0 series
 
 Documentation (15):
 
@@ -652,7 +663,7 @@ Documentation (15):
 - [8c94b535](https://github.com/zephyrproject-rtos/zephyr/commit/8c94b5353a143ea0dfdaee6764735b8839003042) doc: device: dts: Fix the error in the doc.
 - [e09af5f0](https://github.com/zephyrproject-rtos/zephyr/commit/e09af5f008ca19eb28c4722e5edb0faf0e3b43c6) doc: enhance cross compile section in getting started
 
-Drivers (104):
+Drivers (107):
 
 - [a313e5c7](https://github.com/zephyrproject-rtos/zephyr/commit/a313e5c74f01750411bf65e9903278f913328585) drivers: eth: gmac: Fix cache support for SAM GMAC
 - [0a6046cf](https://github.com/zephyrproject-rtos/zephyr/commit/0a6046cf316ae8037459fab06c6c0280a6107d41) drivers: eth: gmac: Ensure caches are enabled before using them
@@ -758,8 +769,11 @@ Drivers (104):
 - [6488ab21](https://github.com/zephyrproject-rtos/zephyr/commit/6488ab21a39d8a8f4d1a5b1522de88e4acddfe7a) driver: pinmux: Add pinmux driver for stm32f2
 - [dffac9ab](https://github.com/zephyrproject-rtos/zephyr/commit/dffac9ab744d97811c2dfb39f47132223b3de785) driver: interrupt_controller: Add support for stm32f2
 - [bdeece01](https://github.com/zephyrproject-rtos/zephyr/commit/bdeece01b8757307f689f4d255be54788e50df10) driver: uart_stm32: add support for stm32f2 series
+- [1b577524](https://github.com/zephyrproject-rtos/zephyr/commit/1b5775249d7b05b46cc6c822d8e89b257dee3a09) usb: add callback codes for Set/Clear Feature ENDPOINT_HALT
+- [3a471e32](https://github.com/zephyrproject-rtos/zephyr/commit/3a471e3240552e41e89887043c2e0c6a267353db) subsys: usb: stall if there is no data buffer
+- [25b0212f](https://github.com/zephyrproject-rtos/zephyr/commit/25b0212fc36a4d6414bb20f06a794ebe89f91f0f) subsys: usb: class: add loopback function
 
-External (13):
+External (16):
 
 - [1112f252](https://github.com/zephyrproject-rtos/zephyr/commit/1112f252742289e14c57b6f6c85eeb8327e48b64) ext/hal/nxp/imx: Import the nxp imx6 freertos bsp
 - [13eba397](https://github.com/zephyrproject-rtos/zephyr/commit/13eba3970dfd4904afe99943c7ca5615c716d2f5) ext: nordic: Correct CMakeLists.txt
@@ -774,13 +788,16 @@ External (13):
 - [414291cc](https://github.com/zephyrproject-rtos/zephyr/commit/414291cc12d14265bfb0f0af4d2eb1d4dfc7daeb) ext: lib: mgmt: mcumgr: update to latest master
 - [f0abb24a](https://github.com/zephyrproject-rtos/zephyr/commit/f0abb24a51bf58988e50486c7fd39e896bfe2b5d) ext: nordic: Fix PWM related nrfx_config entries for nRF52840
 - [396bf477](https://github.com/zephyrproject-rtos/zephyr/commit/396bf4770b00541af75856fbecd2290696852410) hal: stm32f2x: Add HAL for the STM32F2x series
+- [40f7a024](https://github.com/zephyrproject-rtos/zephyr/commit/40f7a024ce9f8f5c369c5663069a14a051a3bca2) ext: debug: segger: Fix CONFIG_SEGGER_RTT_MODE generation.
+- [71ba2de7](https://github.com/zephyrproject-rtos/zephyr/commit/71ba2de75c080ce5ed65a12c4c0b928f0f2ce712) ext: stm32cube: stm32f4xx: shift I2SR field in PLLI2SCFGR register
+- [9a893202](https://github.com/zephyrproject-rtos/zephyr/commit/9a8932024a0f144e4abc6c4ae967b5d5184a1f11) ext: stm32cube: stm32f7xx: shift I2SR field in PLLI2SCFGR register
 
 Firmware Update (2):
 
 - [cd1111e1](https://github.com/zephyrproject-rtos/zephyr/commit/cd1111e16f6f5edb48e23a5d8acd9dd54727bd97) mgmt: Reduce net_buf user data requirement
 - [4535b944](https://github.com/zephyrproject-rtos/zephyr/commit/4535b9443d9c5b06dd99b9df3c9892cdc2861e20) subsys: dfu: img_util: Fix warning with ERR log
 
-Kernel (10):
+Kernel (11):
 
 - [92b8a41f](https://github.com/zephyrproject-rtos/zephyr/commit/92b8a41f206e5aec50eda784d4479ff533d64f29) include: create kernel_includes.h header to hold kernel includes
 - [7727d1a4](https://github.com/zephyrproject-rtos/zephyr/commit/7727d1a48e18519f6f62061ace69b69dfd37926c) kernel: Kconfig: Remove redundant 'default n' properties
@@ -792,6 +809,7 @@ Kernel (10):
 - [e995c27b](https://github.com/zephyrproject-rtos/zephyr/commit/e995c27b426280f43dede60fa1d696560e76c459) kernel: Do not use fixed list of "good" sys_clock_ticks_per_sec values.
 - [91fe22ec](https://github.com/zephyrproject-rtos/zephyr/commit/91fe22ec7d630d17c570b126db915c3a9099c077) kernel: Improve tick <-> ms conversion.
 - [77f42f83](https://github.com/zephyrproject-rtos/zephyr/commit/77f42f8312605b3f4bb84f1d4538d77afe265102) kernel: Move _ms_to_ticks() and __ticks_to_ms() close to each other.
+- [3808ca8e](https://github.com/zephyrproject-rtos/zephyr/commit/3808ca8e6e98fdffe97c2f0ee85bfdc8e92f2f3f) syscall: Add support for syscall_ret64_arg2
 
 Libraries (3):
 
@@ -898,7 +916,7 @@ Scripts (8):
 - [fa5d6ec3](https://github.com/zephyrproject-rtos/zephyr/commit/fa5d6ec36399d7a58c2202b1687fc0c049f027e8) scripts: devicetree.py: get alternate labels from dt
 - [deb0941c](https://github.com/zephyrproject-rtos/zephyr/commit/deb0941cd532da1b2685ccb0692fc7c0e0551c91) scripts/extract/globals: treat node alternate names as 'aliases'
 
-Testing (22):
+Testing (23):
 
 - [064608b4](https://github.com/zephyrproject-rtos/zephyr/commit/064608b4295f60e962bf9fd7b33a2fd970158b69) include: remove unused macros from include/arch/*/arch.h
 - [c6336371](https://github.com/zephyrproject-rtos/zephyr/commit/c63363711d50276251c38859f2a02d4fcbefe5c2) tests: net: Add unit test for network pkt timestamping
@@ -922,3 +940,4 @@ Testing (22):
 - [01c11c17](https://github.com/zephyrproject-rtos/zephyr/commit/01c11c172a1c025cc348bb432883aabd6cbc41be) tests: net: Add 802.1Qav test
 - [2f5fea0e](https://github.com/zephyrproject-rtos/zephyr/commit/2f5fea0eec96c25cea8c1455e647131fa0d2d7ac) benchmarks: app_kernel: Fixed coverity issue.
 - [0de49e5d](https://github.com/zephyrproject-rtos/zephyr/commit/0de49e5d402eaf7cbcb6e121f90c827ac4dd49dc) tests: kernel: Add description for test case
+- [f5ec5674](https://github.com/zephyrproject-rtos/zephyr/commit/f5ec56747ea19d3f51e24e0e4610fa3a20711c78) tests: net: trickle: Initialize test variables earlier
