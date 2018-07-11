@@ -15,9 +15,30 @@ paginate = 10
 
 [menu]
 [[menu.main]]
+    name = "Quick Links"
+    weight = 1
+    [[menu.main]]
+        name = "Forums"
+        parent = "Quick Links"
+        url  = "https://forums.foundries.io"
+        weight = 1
+    [[menu.main]]
+        name = "Support Portal"
+        parent = "Quick Links"
+        url  = "https://foundriesio.atlassian.net/servicedesk"
+        weight = 2
+    [[menu.main]]
+        name = "Slack"
+        parent = "Quick Links"
+        url  = "https://join.slack.com/t/foundriesio/shared_invite/enQtMjUwNzA1MTc4NzA4LTI2YTc4YjUyMTY2NWE3NTQxOTJjYjY3M2NkNTVmYjM2M2JhZGYzNDM1Mzk4MzkxMDI5ZWNhOWUzMWVlYmI4NDE"
+        weight = 2
+
+
+
+[[menu.main]]
     name = "Product"
     url  = "/product/"
-    weight = 1
+    weight = 2
     [[menu.main]]
         name = "Overview"
         parent = "Product"
@@ -51,16 +72,16 @@ paginate = 10
 [[menu.main]]
     name = "Partners"
     url  = "/partners/"
-    weight = 2
+    weight = 3
 [[menu.main]]
     name = "Blog"
     url  = "/blog/"
-    weight = 3
+    weight = 4
 [[menu.main]]
     name = "About"
     identifier = "About"
     url  = "/about/"
-    weight = 4
+    weight = 5
     [[menu.main]]
         name = "Company"
         parent = "About"
