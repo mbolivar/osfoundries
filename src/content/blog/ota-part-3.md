@@ -97,9 +97,9 @@ OTA Community Edition is running and exposed to the internet. The nginx reverse-
 
 ### Upload an Image
 
-[Uploading an image](https://foundries.io/docs/0.22/reference/linux-ota.html#upload-image-to-ats-garage) is a great way to validate the server is working and will be needed when you register a device:
+[Uploading an image](https://app.foundries.io/docs/0.22/reference/linux-ota.html#upload-image-to-ats-garage) is a great way to validate the server is working and will be needed when you register a device:
 ~~~
-  wget https://foundries.io/mp/lmp/0.22/artifacts/other-intel-corei7-64/other/intel-corei7-64-ostree_repo.tar.bz2
+  wget https://app.foundries.io/mp/lmp/0.22/artifacts/other-intel-corei7-64/other/intel-corei7-64-ostree_repo.tar.bz2
   tar -xf intel-corei7-64-ostree_repo.tar.bz2
   # if you hacked /etc/hosts then include "--network host"
   docker run --rm -it -v $PWD:/build --workdir=/build opensourcefoundries/aktualizr \
@@ -115,4 +115,4 @@ OTA Community Edition requires [implicit provisioning](https://github.com/advanc
 
 You can then copy these credentials to your target device to register. Instrusctions for that can be found at:
 
-  https://foundries.io/docs/0.22/reference/linux-ota.html#register-device
+  https://app.foundries.io/docs/0.22/reference/linux-ota.html#register-device
