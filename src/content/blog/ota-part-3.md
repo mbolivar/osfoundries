@@ -110,6 +110,7 @@ OTA Community Edition is running and exposed to the internet. The nginx reverse-
 OTA Community Edition requires [implicit provisioning](https://github.com/advancedtelematic/aktualizr/blob/master/docs/implicit-provisioning.adoc). Creating a device is fairly easy:
 ~~~
   # DEVICE_ID = The name of the device to appear in OTA Community Edition
+  # SERVER_NAME = Your gateway server. eg SERVER_NAME=ota-ce.example.com
   ./contrib/gke/make SERVER_NAME=<SERVER_NAME> DEVICE_ID=<DEVICE_ID> SKIP_CLIENT=true new-client
 ~~~
 
