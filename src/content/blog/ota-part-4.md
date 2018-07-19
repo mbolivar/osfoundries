@@ -96,7 +96,9 @@ in your deployment. Deploying this is easy:
 
 The web interface will also now be secured with HTTP basic authentication.
 The username is ignored, so you can enter anything into that value. The
-password is `BadT0ken5`.
+password is `BadT0ken5`. 
+**NOTE**: *This only works with Firefox. It seems like the Chrome browser
+doesn't want to send credentials over an insecure HTTP connection.*
 
 ### Update credentials.zip
 
