@@ -38,11 +38,12 @@ banner = "img/banners/update.png"
 EOL
 }
 
-var=17.10.1
-header $var '2017-10-13'
-highlight-it '# Highlights' $var
-curl-it '# Zephyr microPlatform' zmp $var
-curl-it '# Linux microPlatform' lmp $var
+echo "NOT REGENERATING 17.10.1 release"
+#var=17.10.1
+#header $var '2017-10-13'
+#highlight-it '# Highlights' $var
+#curl-it '# Zephyr microPlatform' zmp $var
+#curl-it '# Linux microPlatform' lmp $var
 
 var=0.1
 header $var '2017-11-08'
@@ -56,11 +57,12 @@ highlight-it '# Highlights' $var
 curl-it '# Zephyr microPlatform' zmp $var
 curl-it '# Linux microPlatform' lmp $var
 
-var=0.3
-header $var '2017-12-07'
-highlight-it '# Highlights' $var
-curl-it '# Zephyr microPlatform' zmp $var
-curl-it '# Linux microPlatform' lmp $var
+echo "NOT REGENERATING 0.03 release"
+#var=0.3
+#header $var '2017-12-07'
+#highlight-it '# Highlights' $var
+#curl-it '# Zephyr microPlatform' zmp $var
+#curl-it '# Linux microPlatform' lmp $var
 
 var=0.4
 header $var '2017-12-13'
@@ -98,11 +100,12 @@ highlight-it '# Highlights' $var
 curl-it '# Zephyr microPlatform' zmp $var
 curl-it '# Linux microPlatform' lmp $var
 
-var=0.10
-header $var '2018-03-13'
-highlight-it '# Highlights' $var
-curl-it '# Zephyr microPlatform' zmp $var
-curl-it '# Linux microPlatform' lmp $var
+echo "NOT REGENERATING 0.10 release"
+#var=0.10
+#header $var '2018-03-13'
+#highlight-it '# Highlights' $var
+#curl-it '# Zephyr microPlatform' zmp $var
+#curl-it '# Linux microPlatform' lmp $var
 
 var=0.11
 header $var '2018-03-20'
@@ -116,11 +119,12 @@ highlight-it '# Highlights' $var
 curl-it '# Zephyr microPlatform' zmp $var
 curl-it '# Linux microPlatform' lmp $var
 
-var=0.13
-header $var '2018-04-11'
-highlight-it '# Highlights' $var
-curl-it '# Zephyr microPlatform' zmp $var
-curl-it '# Linux microPlatform' lmp $var
+echo "NOT REGENERATING 0.13 release"
+#var=0.13
+#header $var '2018-04-11'
+#highlight-it '# Highlights' $var
+#curl-it '# Zephyr microPlatform' zmp $var
+#curl-it '# Linux microPlatform' lmp $var
 
 var=0.14
 header $var '2018-04-18'
@@ -164,11 +168,12 @@ highlight-it '# Highlights' $var
 curl-it '# Zephyr microPlatform' zmp $var
 curl-it '# Linux microPlatform' lmp $var
 
-var=0.21
-header $var '2018-06-18'
-highlight-it '# Highlights' $var
-curl-it '# Zephyr microPlatform' zmp $var
-curl-it '# Linux microPlatform' lmp $var
+echo "NOT REGENERATING 0.21 release"
+#var=0.21
+#header $var '2018-06-18'
+#highlight-it '# Highlights' $var
+#curl-it '# Zephyr microPlatform' zmp $var
+#curl-it '# Linux microPlatform' lmp $var
 
 var=0.22
 header $var '2018-06-21'
@@ -178,6 +183,12 @@ curl-it '# Linux microPlatform' lmp $var
 
 var=0.23
 header $var '2018-06-29'
+highlight-it '# Highlights' $var
+curl-it '# Zephyr microPlatform' zmp $var
+curl-it '# Linux microPlatform' lmp $var
+
+var=0.24
+header $var '2018-07-12'
 highlight-it '# Highlights' $var
 curl-it '# Zephyr microPlatform' zmp $var
 curl-it '# Linux microPlatform' lmp $var
