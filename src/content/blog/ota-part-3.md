@@ -56,7 +56,7 @@ With the container in place, you need to configure the `gcloud` tools to use you
 
 ### Deploy OTA Community Edition
 
-The ota-blog-part3 branch of OTA Community Edition includes a helper script to deploy OTA Community Edition. The script isn't very long and is worth taking a close look at to understand the mechanics of deploying OTA Community Edition. Deploying is as simple as::
+The ota-blog-part3 branch of OTA Community Edition includes a helper script to deploy OTA Community Edition. The script isn't very long and is worth taking a close look at to understand the mechanics of deploying OTA Community Edition. Deploying is as simple as:
 ~~~
   ./create-cluster.sh example.com
 ~~~
@@ -114,6 +114,87 @@ OTA Community Edition requires [implicit provisioning](https://github.com/advanc
   ./contrib/gke/make SERVER_NAME=<SERVER_NAME> DEVICE_ID=<DEVICE_ID> SKIP_CLIENT=true new-client
 ~~~
 
-You can then copy these credentials to your target device to register. Instrusctions for that can be found at:
+Configuring your device is fairly simple. Remote access, however, isn't
+always the same. Here are the files you'll need to copy to your device:
 
-  https://app.foundries.io/docs/0.22/reference/linux-ota.html#register-device
+ * generated/`<SERVER_NAME>`/server_ca.pem to /var/sota/root.crt
+ * generated/`<SERVER_NAME>`/devices/`<DEVICE_ID>`/client.pem /var/sota/client.pem
+ * generated/`<SERVER_NAME>`/devices/`<DEVICE_ID>`/pkey.pem /var/sota/pkey.pem
+
+If you haven't set up DNS entries, you'll need to add a line to
+/etc/hosts on the target device. The public IP comes from the gateway-service:
+~~~
+  ./contrib/gke/kubectl get svc gateway-service -o json \
+    | jq -r '.status.loadBalancer.ingress[0].ip'
+
+  # /etc/hosts on target would get something like:
+  ota-ce.example.com <ip-from-comand-above>
+~~~
+
+Finally create a /var/sota/sota.toml on your target device:
+~~~
+# /var/sota/sota.toml
+[gateway]
+http = true
+socket = false
+
+[network]
+socket_commands_path = "/tmp/sota-commands.socket"
+socket_events_path = "/tmp/sota-events.socket"
+socket_events = "DownloadComplete, DownloadFailed"
+
+[p11]
+module = ""
+pass = ""
+uptane_key_id = ""
+tls_ca_id = ""
+tls_pkey_id = ""
+tls_clientcert_id = ""
+
+[tls]
+server = "https://ota-ce.example.com:8443"
+ca_source = "file"
+pkey_source = "file"
+cert_source = "file"
+
+[provision]
+server = "https://ota-ce.example.com:8443"
+p12_password = ""
+expiry_days = "36000"
+provision_path = ""
+
+[uptane]
+polling = true
+polling_sec = 10
+device_id = ""
+primary_ecu_serial = ""
+# NOTE - this might need to change depending on your CPU
+primary_ecu_hardware_id = "intel-corei7-64"
+director_server = "https://ota-ce.example.com:8443/director"
+repo_server = "https://ota-ce.example.com:8443/repo"
+key_source = "file"
+
+[pacman]
+type = "ostree"
+os = ""
+sysroot = ""
+ostree_server = "https://ota-ce.example.com:8443/treehub"
+packages_file = "/usr/package.manifest"
+
+[storage]
+type = "filesystem"
+path = "/var/sota/"
+uptane_metadata_path = "metadata"
+uptane_private_key_path = "ecukey.der"
+uptane_public_key_path = "ecukey.pub"
+tls_cacert_path = "root.crt"
+tls_pkey_path = "pkey.pem"
+tls_clientcert_path = "client.pem"
+
+[import]
+uptane_private_key_path = ""
+uptane_public_key_path = ""
+tls_cacert_path = "/var/sota/root.crt"
+tls_pkey_path = ""
+tls_clientcert_path = ""
+~~~
