@@ -1,0 +1,54 @@
+timeout: 5
+triggers:
+  - name: merge-request
+    type: gitlab_mr
+    runs:
+      - name: unit-test
+        container: alpine
+        host-tag: amd64
+        script: unit-test
+
+  - name: post-merge
+    type: git_poller
+    params:
+      GIT_URL: "https://git.foundries.io/development/cloudplatforms/foundries.io"
+      GIT_POLL_REFS: "refs/heads/master"
+    runs:
+      - name: deploy
+        container: alpine
+        host-tag: amd64
+        script: deploy
+        params:
+          GIT_DEPLOY_DIR: "/out"
+          GIT_DEPLOY_REPO: "https://github.com/foundriesio/foundries.io-rendered.git"
+          GIT_DEPLOY_BRANCH: "master"
+          GIT_DEPLOY_USERNAME: "Gavin Gavel"
+          GIT_DEPLOY_EMAIL: "bot@foundries.io"
+    email:
+      users: 'alan@foundries.io, andy@foundries.io'
+
+scripts:
+  unit-test: |
+    #!/bin/sh -ex
+    apk add --update curl
+
+    ./binaries/hugo -d /archive -s ./src
+
+    set +x   # cleaner output and don't leak the secret token below
+    urlbase="https://app.foundries.io/b/${H_PROJECT}/${H_BUILD}/${H_RUN}"
+    echo == $(date "+%F %T") HTML browsable at: ${urlbase}/artifacts/index.html
+
+    gl="$(echo ${GL_STATUS_URL} | sed -e 's/statuses/repository\/commits/')/comments"
+    tok=$(cat /secrets/gitlabtok)
+    curl -X POST \
+        -H "Content-Type: application/json" \
+        -H "PRIVATE-TOKEN: $tok" \
+        -d "{\"note\": \"Docs for ${GIT_SHA} will be browsable at: ${urlbase}/artifacts/index.html after they are uploaded\"}" \
+        $gl
+
+  deploy: |
+    #!/bin/sh -ex
+    apk add --update bash git
+
+    ./binaries/hugo -d $GIT_DEPLOY_DIR -s ./src
+    ./binaries/deploy.sh
